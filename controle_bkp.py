@@ -78,6 +78,15 @@ def salvar_dados():
     nf = editar.txtAlterarNf.text()
     descricao = editar.txtAlterarDescricao.text()
 
+    cursor = conexao.cursor()
+
+    cursor.execute("UPDATE produtos_bkp SET id = '{}', produto = '{}', armazenamento = '{}', estoque = '{}', nf = '{}', descricao = '{}' WHERE id={}".format(id, produto, localarmazenamento, estoque, nf, descricao, numero_id))
+   
+    editar.close()
+    lista.close()
+    formulario.show()
+
+    conexao.commit()
 
 def lista():
     """
@@ -176,6 +185,9 @@ lista.btnAlterar.clicked.connect(editar)
 
 editar = uic.loadUi('editar_bkp.ui')
 # Carrega a interface do usuario a partir do arquivo 'editar.ui' criado no Qt Designer.
+
+editar.btnConfirmar.clicked.connect(salvar_dados)    
+# Associa o evento de clique do botão 'btnConfirmar' ao evento 'salvar_dados'
 
 formulario.show()
 # Mostra a janela do formulario.
