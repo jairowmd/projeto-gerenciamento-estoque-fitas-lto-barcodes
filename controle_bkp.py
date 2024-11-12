@@ -29,75 +29,89 @@ def excluir():
     Exclui o registro selecionado na lista do banco de dados.
 
     Obtém o id do registro selecionado na lista, busca os dados desse registro no banco de dados e exclui o registro com o id correspondente.
+    
     """
 
-    # Obtém o índice da linha selecionada na tabela da janela de lista
     remover = lista.tableWidget.currentRow()
+    # Obtém o índice da linha selecionada na tabela da janela de lista
 
-    lista.tableWidget.removeRow(remover) 
+    lista.tableWidget.removeRow(remover)
+    # Remove a linha selecionada da tabela
 
-    # Cria um cursor para interagir com o banco de dados
     cursor = conexao.cursor()
+    # Cria um cursor para interagir com o banco de dados
+
     cursor.execute("SELECT id FROM produtos_bkp")
+    # Executa uma consulta SQL para obter todos os ids do banco de dados
+
     leitura_banco = cursor.fetchall()
+    # Fetcha todos os ids do banco de dados
 
-    # Obtém o valor do id do registro selecionado na lista
     valor_id = leitura_banco[remover][0]
+    # Obtém o valor do id do registro selecionado na lista
 
-    # Executa uma consulta SQL para excluir o registro com o id correspondente
     cursor.execute("DELETE FROM produtos_bkp WHERE id = " + str(valor_id))
+    # Executa uma consulta SQL para excluir o registro com o id correspondente
 
-    # Confirma a alteração no banco de dados
     conexao.commit()
-
-
+    # Confirma a alteração no banco de dados
 
 def editar():
     """
     Abre a janela de edição com os dados do registro selecionado na lista.
 
     Obtém o id do registro selecionado na lista, busca os dados desse registro no banco de dados e preenche a janela de edição com esses dados.
+
     """
 
     global numero_id
 
-    # Obtém o índice da linha selecionada na tabela da janela de lista
     dados = lista.tableWidget.currentRow()
+    # Obtém o índice da linha selecionada na tabela da janela de lista
 
-    # Cria um cursor para interagir com o banco de dados
     cursor = conexao.cursor()
+    # Cria um cursor para interagir com o banco de dados
 
-    # Executa uma consulta SQL para obter todos os ids do banco de dados
     cursor.execute("SELECT id FROM produtos_bkp")
+    # Executa uma consulta SQL para obter todos os ids do banco de dados
 
+    leitura_banco = cursor.fetchall()
     # Fetcha todos os ids do banco de dados
-    leitura_banco = cursor.fetchall()
 
-    # Obtém o valor do id do registro selecionado na lista
     valor_id = leitura_banco[dados][0]
+    # Obtém o valor do id do registro selecionado na lista
 
-    # Executa uma consulta SQL para obter todos os dados do registro com o id correspondente
     cursor.execute("SELECT * FROM produtos_bkp WHERE id =" + str(valor_id))
+    # Executa uma consulta SQL para obter todos os dados do registro com o id correspondente
 
-    # Fetcha todos os dados do registro com o id correspondente
     leitura_banco = cursor.fetchall()
+    # Fetcha todos os dados do registro com o id correspondente
 
-    # Mostra a janela de edição
     editar.show()
+    # Mostra a janela de edição
 
     numero_id = valor_id
+    # Define o número do id do registro selecionado na lista
 
-    # Preenche os campos de texto da janela de edição com os dados do registro
     editar.txtAlterarId.setText(str(leitura_banco[0][0]))
     editar.txtAlterarProduto.setText(str(leitura_banco[0][1]))
     editar.txtAlterarLocalArmazenamento.setText(str(leitura_banco[0][2]))
     editar.txtAlterarEstoque.setText(str(leitura_banco[0][3]))
     editar.txtAlterarNf.setText(str(leitura_banco[0][4]))
     editar.txtAlterarDescricao.setText(str(leitura_banco[0][5]))
+    # Preenche os campos de texto da janela de edição com os dados do registro
+
 
 def salvar_dados():
-    
+    """
+    Salva as alterações feitas na janela de edição e fecha as janelas de edição e lista.
+
+    Obtém os valores digitados nos campos de texto da janela de edição, executa uma consulta SQL para atualizar o registro com o id correspondente no banco de dados, fecha as janelas de edição e lista e abre a janela do formulário.
+
+    """
+
     global numero_id
+    # Define o número do id do registro
 
     id = editar.txtAlterarId.text()
     produto = editar.txtAlterarProduto.text()
@@ -105,16 +119,25 @@ def salvar_dados():
     estoque = editar.txtAlterarEstoque.text()
     nf = editar.txtAlterarNf.text()
     descricao = editar.txtAlterarDescricao.text()
+    # Obtém os valores digitados nos campos de texto da janela de edição
 
     cursor = conexao.cursor()
+    # Cria um cursor para interagir com o banco de dados
 
     cursor.execute("UPDATE produtos_bkp SET id = '{}', produto = '{}', armazenamento = '{}', estoque = '{}', nf = '{}', descricao = '{}' WHERE id={}".format(id, produto, localarmazenamento, estoque, nf, descricao, numero_id))
-   
+   # Executa uma consulta SQL para atualizar o registro com o id correspondente no banco de dados
+
     editar.close()
+    # Fecha a janela de edição
+
     lista.close()
+    # Fecha a janela de lista
+
     formulario.show()
+    # Mostra a janela do formulário
 
     conexao.commit()
+    # Confirma a alteração no banco de dados
 
 def lista():
     """
@@ -125,26 +148,26 @@ def lista():
     preenchido na tabela.
     """
 
-    # Mostra a janela com a lista
     lista.show()
+    # Mostra a janela com a lista
 
-    # Cria um cursor para interagir com o banco de dados
     cursor = conexao.cursor()
+    # Cria um cursor para interagir com o banco de dados
 
-    # Comando SQL para selecionar todos os registros da tabela
     comando_SQL = "SELECT * FROM produtos_bkp"
+    # Comando SQL para selecionar todos os registros da tabela
 
-    # Executa o comando SQL
     cursor.execute(comando_SQL)
+    # Executa o comando SQL
 
-    # Fetcha todos os registros da tabela
     leitura_banco = cursor.fetchall()
+    # Fetcha todos os registros da tabela
 
-    # Define o número de linhas na tabela
     lista.tableWidget.setRowCount(len(leitura_banco))
+    # Define o número de linhas na tabela
 
-    # Define o número de colunas na tabela
     lista.tableWidget.setColumnCount(6)
+    # Define o número de colunas na tabela
 
     # Preenche a tabela com os registros
     for i in range(0, len(leitura_banco)):
@@ -161,29 +184,32 @@ def inserir():
 
     """
     
-    # Obtém os valores digitados no formulário
     produto = formulario.txtProduto.text()
     localarmazenamento = formulario.txtLocalArmazenamento.text()
     estoque = formulario.txtEstoque.text()
     nf = formulario.txtNf.text()
     descricao = formulario.txtDescricao.text()
+    # Obtém os valores digitados no formulário
     
-    # Cria um cursor para executar um comando SQL
+    
     cursor = conexao.cursor()
-    
-    # Comando SQL para inserir um novo registro
+    # Cria um cursor para executar um comando SQL
+
     comando_SQL = "INSERT INTO produtos_bkp (produto, armazenamento, estoque, nf, descricao) VALUES (%s, %s, %s, %s, %s)" 
+    # Comando SQL para inserir um novo registro
+
     
-    # Dados a serem inseridos
     dados = (str(produto), str(localarmazenamento), str(estoque), str(nf), str(descricao))
+    # Dados a serem inseridos
+
     
-    # Executa o comando SQL
     cursor.execute(comando_SQL, dados)
+    # Executa o comando SQL
+
     
-    # Confirma a alteração no banco de dados
     conexao.commit()
-    
-    # Limpa os campos do formulário
+    # Confirma a alteração no banco de dados
+
 
     formulario.txtProduto.setText('')
     formulario.txtLocalArmazenamento.setText('')
@@ -191,6 +217,7 @@ def inserir():
     formulario.txtNf.setText('')
     formulario.txtDescricao.setText('')
     formulario.lblConfirmacao.setText('Dados Inseridos com sucesso!')
+    # Limpa os campos do formulário
 
 
 
@@ -202,6 +229,7 @@ formulario = uic.loadUi('formulario_bkp.ui')
 # Carrega a interface do usu rio a partir do arquivo 'formulario.ui' criado no Qt Designer.
 
 formulario.btnCadastrar.clicked.connect(inserir)
+# Associa o evento de clique do botão 'btnCadastrar' ao evento 'inserir'
 
 formulario.btnRelatorio.clicked.connect(lista)
 # Associa o evento de clique do botão 'btnCadastrar' ao evento 'inserir' e ao evento 'close' da janela do formulario.
