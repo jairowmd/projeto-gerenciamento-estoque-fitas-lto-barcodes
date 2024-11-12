@@ -24,6 +24,34 @@ conexao = pymysql.connect(
 
 numero_id = 0
 
+def excluir():
+    """
+    Exclui o registro selecionado na lista do banco de dados.
+
+    Obtém o id do registro selecionado na lista, busca os dados desse registro no banco de dados e exclui o registro com o id correspondente.
+    """
+
+    # Obtém o índice da linha selecionada na tabela da janela de lista
+    remover = lista.tableWidget.currentRow()
+
+    lista.tableWidget.removeRow(remover) 
+
+    # Cria um cursor para interagir com o banco de dados
+    cursor = conexao.cursor()
+    cursor.execute("SELECT id FROM produtos_bkp")
+    leitura_banco = cursor.fetchall()
+
+    # Obtém o valor do id do registro selecionado na lista
+    valor_id = leitura_banco[remover][0]
+
+    # Executa uma consulta SQL para excluir o registro com o id correspondente
+    cursor.execute("DELETE FROM produtos_bkp WHERE id = " + str(valor_id))
+
+    # Confirma a alteração no banco de dados
+    conexao.commit()
+
+
+
 def editar():
     """
     Abre a janela de edição com os dados do registro selecionado na lista.
@@ -181,7 +209,11 @@ formulario.btnRelatorio.clicked.connect(lista)
 lista = uic.loadUi('lista_bkp.ui')
 # Carrega a interface do usuario a partir do arquivo 'lista.ui' criado no Qt Designer.
 
-lista.btnAlterar.clicked.connect(editar)
+lista.btnAlterar.clicked.connect(editar)    
+# Associa o evento de clique do botão 'btnAlterar' ao evento 'editar'
+
+lista.btnDeletar.clicked.connect(excluir)    
+# Associa o evento de clique do botão 'btnDeletar' ao evento 'excluir'
 
 editar = uic.loadUi('editar_bkp.ui')
 # Carrega a interface do usuario a partir do arquivo 'editar.ui' criado no Qt Designer.
