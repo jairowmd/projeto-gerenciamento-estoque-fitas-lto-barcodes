@@ -17,6 +17,7 @@ editar_bkp.ui: Interface para editar produtos existentes.
 - `PyQt5` para interface gráfica
 - `pymysql` para a conexão com o banco de dados MySQL
 - `python-dotenv` para carregar variáveis de ambiente a partir de um arquivo `.env`
+-  Banco de dados MySQL com tabelas `produtos_bkp`
 
 ## Configuração
 
@@ -26,7 +27,18 @@ editar_bkp.ui: Interface para editar produtos existentes.
 2. Instale as dependências necessárias:
    pip install -r requirements.txt
 
-3. Crie um arquivo .env na raiz do projeto com as seguintes variáveis de ambiente:
+3. crie um banco de dados MySQL com as tabelas `produtos_bkp` que contem com os campos `id`, `produto`, `armazenamento`, `estoque`, `nf`, `descricao`.
+
+    CREATE TABLE produtos_bkp (
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        produto VARCHAR(255) NOT NULL,
+        armazenamento VARCHAR(255) NOT NULL,
+        estoque VARCHAR(255) NOT NULL,
+        nf VARCHAR(255) NOT NULL,
+        descricao VARCHAR(255) NOT NULL,
+    );
+
+4. Crie um arquivo .env na raiz do projeto com as seguintes variáveis de ambiente:
 
     DB_HOST=seu_host
     DB_USER=seu_usuario
