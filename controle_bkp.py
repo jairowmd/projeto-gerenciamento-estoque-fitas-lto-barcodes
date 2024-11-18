@@ -100,6 +100,7 @@ def editar():
     editar.txtAlterarNf.setText(str(leitura_banco[0][4]))
     editar.txtAlterarDescricao.setText(str(leitura_banco[0][5]))
     # Preenche os campos de texto da janela de edição com os dados do registro
+    
 
 
 def salvar_dados():
@@ -168,6 +169,14 @@ def lista():
 
     lista.tableWidget.setColumnCount(6)
     # Define o número de colunas na tabela
+
+    # Ajuste a largura das colunas conforme necessário
+    lista.tableWidget.setColumnWidth(0, 50)  # Ajusta a largura da coluna 1 para 50 pixels
+    lista.tableWidget.setColumnWidth(1, 150) # Ajusta a largura da coluna 2 para 150 pixels
+    lista.tableWidget.setColumnWidth(2, 150) # Ajusta a largura da coluna 3 para 150 pixels
+    lista.tableWidget.setColumnWidth(3, 100) # Ajusta a largura da coluna 4 para 100 pixels
+    lista.tableWidget.setColumnWidth(4, 100) # Ajusta a largura da coluna 5 para 100 pixels
+    lista.tableWidget.setColumnWidth(5, 400) # Ajusta a largura da coluna 6 para 400 pixels   
 
     # Preenche a tabela com os registros
     for i in range(0, len(leitura_banco)):
