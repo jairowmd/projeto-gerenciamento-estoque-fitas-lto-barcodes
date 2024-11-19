@@ -1,3 +1,5 @@
+import bcrypt
+# Importa o módulo 'bcrypt', que fornece uma maneira de gerar e verificar hashes de senhas seguros.
 
 from dotenv import load_dotenv
 # Importa a função 'load_dotenv' do módulo 'dotenv', que é usada para carregar variáveis de ambiente de um arquivo .env.
@@ -228,11 +230,82 @@ def inserir():
     formulario.lblConfirmacao.setText('Dados Inseridos com sucesso!')
     # Limpa os campos do formulário
 
+def login():
+    """
+    Verifica se o login digitado pelo usuário é válido.
 
+    Obtém o nome de usuário e senha digitados pelo usuário e verifica se o
+    usuário existe no banco de dados e se a senha informada é válida. Se o
+    login for válido, fecha a janela de login e abre a janela do formulário.
+
+    Se o login for inválido, exibe uma mensagem de erro informando que o
+    usuário ou senha são incorretos.
+    """
+    username = login_window.txtUsuario.text()
+    # Obtém o nome de usuário digitado
+    password = login_window.txtSenha.text()
+    # Obtém a senha digitada
+
+    cursor = conexao.cursor()
+    # Cria um cursor para interagir com o banco de dados
+    cursor.execute("SELECT senha FROM usuarios WHERE usuario = %s", (username,))
+    # Executa uma consulta SQL para obter a senha do usuário
+    result = cursor.fetchone()
+    # Fetcha a senha do usuário
+
+    if result:
+        # Se houver resultados, verifica se a senha digitada é valida
+        stored_password = result[0]
+        # Obtém a senha armazenada
+        if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+            # Verifica se a senha digitada é valida:
+            login_window.close()
+            formulario.show()
+        else:
+            QtWidgets.QMessageBox.warning(login_window, 'Erro', 'Usuário ou senha incorretos')
+            # Exibe uma mensagem de erro informando que o usuário ou senha são incorretos
+    else:
+        QtWidgets.QMessageBox.warning(login_window, 'Erro', 'Usuário ou senha incorretos')
+        # Exibe uma mensagem de erro informando que o usuário ou senha são incorretos
+
+
+def cadastrar_usuario(username, password):
+    """
+    Cadastra um novo usuário no banco de dados.
+
+    Recebe o nome de usuário e a senha, gera um hash seguro para a senha utilizando bcrypt 
+    e insere o novo usuário com a senha criptografada na tabela de usuários do banco de dados.
+    
+    # Exemplo de uso: cadastrar_usuario("novo_usuario", "nova_senha")
+
+    Parâmetros:
+    username (str): O nome de usuário a ser cadastrado.
+    password (str): A senha do usuário a ser cadastrada.
+
+    """
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    # Gera um hash seguro para a senha
+    cursor = conexao.cursor()
+    # Cria um cursor para interagir com o banco de dados
+    cursor.execute("INSERT INTO usuarios (usuario, senha) VALUES (%s, %s)", (username, hashed_password))
+    # Insere o novo usuário com a senha criptografada
+    conexao.commit()
+    # Confirma a alteração no banco de dados
+
+# Exemplo de uso: cadastrar_usuario("novo_usuario", "nova_senha")
 
 
 app = QtWidgets.QApplication([])
 # Cria uma instancia da aplica o Qt. O argumento '[]' pode ser usado para passar argumentos de linha de comando.
+
+login_window = uic.loadUi('login.ui')
+# Carrega a interface de login
+
+login_window.txtSenha.setEchoMode(QtWidgets.QLineEdit.Password)
+# Define o modo de exibição da senha como 'Password'
+
+login_window.btnEntrar.clicked.connect(login)
+# Associa o evento de clique do botão 'btnEntrar' ao evento 'login'
 
 formulario = uic.loadUi('formulario_bkp.ui')
 # Carrega a interface do usu rio a partir do arquivo 'formulario.ui' criado no Qt Designer.
@@ -258,8 +331,8 @@ editar = uic.loadUi('editar_bkp.ui')
 editar.btnConfirmar.clicked.connect(salvar_dados)    
 # Associa o evento de clique do botão 'btnConfirmar' ao evento 'salvar_dados'
 
-formulario.show()
-# Mostra a janela do formulario.
+login_window.show()
+# Mostra a janela do login.
 
 app.exec()
 # Executa a aplica o, fazendo com que o loop de eventos seja executado.

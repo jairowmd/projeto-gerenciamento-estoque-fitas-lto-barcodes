@@ -10,14 +10,18 @@ O código principal está no arquivo controle_bkp.py, que carrega as variáveis 
 formulario_bkp.ui: Interface para inserir novos produtos.
 lista_bkp.ui: Interface para listar, editar e excluir produtos.
 editar_bkp.ui: Interface para editar produtos existentes.
+login.ui: Interface de login.
 
 ## Requisitos
 
-- Python 3.7+
+- `Python 3.7+`
 - `PyQt5` para interface gráfica
 - `pymysql` para a conexão com o banco de dados MySQL
 - `python-dotenv` para carregar variáveis de ambiente a partir de um arquivo `.env`
 -  Banco de dados MySQL com tabelas `produtos_bkp`
+-  Variáveis de ambiente `DB_HOST`, `DB_USER`, `DB_PASSWORD` e `DB_DATABASE` definidas no arquivo `.env`
+-  Cria um banco de dados MySQL com as tabelas `produtos_bkp` que contem com os campos `id`, `produto`, `armazenamento`, `estoque`, `nf`, `descricao`.
+-  `bcrypt` para gerar e verificar hashes de senhas seguros.
 
 ## Configuração
 
@@ -36,6 +40,14 @@ editar_bkp.ui: Interface para editar produtos existentes.
         estoque VARCHAR(255) NOT NULL,
         nf VARCHAR(255) NOT NULL,
         descricao VARCHAR(255) NOT NULL,
+    );
+
+3.1 Crie um banco de dados MySQL com as tabelas `usuarios` que contem com os campos `id`, `usuario` e `senha`.
+
+    CREATE TABLE usuarios ( 
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+        usuario VARCHAR(100) NOT NULL, 
+        senha VARCHAR(255) NOT NULL 
     );
 
 4. Crie um arquivo .env na raiz do projeto com as seguintes variáveis de ambiente:
@@ -69,6 +81,7 @@ Este projeto é licenciado sob a licença MIT.
 Se você tiver alguma dúvida ou precisar de ajuda, por favor, entre em contato comigo através do meu perfil do GitHub.
 
 ## Histórico de alterações
-Versão 1.0.0: Lançamento inicial
-Versão 1.1.0: Adição de recursos de edição e exclusão
-Versão 1.2.0: Correção de bugs e melhorias de desempenho
+- Versão 1.0.0: Lançamento inicial
+- Versão 1.1.0: Adição de recursos de edição e exclusão
+- Versão 1.2.0: Correção de bugs e melhorias de desempenho
+- Versão 1.3.0: Adição de interface de login e autenticação de usuários
