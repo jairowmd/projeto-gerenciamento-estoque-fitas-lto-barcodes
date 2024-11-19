@@ -12,6 +12,13 @@ lista_bkp.ui: Interface para listar, editar e excluir produtos.
 editar_bkp.ui: Interface para editar produtos existentes.
 login.ui: Interface de login.
 
+## Screenshots
+
+![Tela de Login](screenshots/tela_login.png)
+![Tela de Cadastro](screenshots/tela_cadastro.png)
+![Tela de Listagem](screenshots/tela_alteracao.png)
+![Tela de Edição](screenshots/tela_relatorios.png)
+
 ## Requisitos
 
 - `Python 3.7+`
