@@ -12,13 +12,6 @@ lista_bkp.ui: Interface para listar, editar e excluir produtos.
 editar_bkp.ui: Interface para editar produtos existentes.
 login.ui: Interface de login.
 
-## Screenshots
-
-![Tela de Login](screenshots/tela_login.png)
-![Tela de Cadastro](screenshots/tela_cadastro.png)
-![Tela de Listagem](screenshots/tela_alteracao.png)
-![Tela de Edição](screenshots/tela_relatorios.png)
-
 ## Requisitos
 
 - `Python 3.7+`
@@ -77,6 +70,18 @@ Na janela de listagem, o botão "Alterar" abre a janela de edição para o produ
 
 Excluir Items
 Na janela de listagem, o botão "Deletar" permite excluir o produto selecionado da tabela e do banco de dados. A função excluir() remove a linha da tabela e executa uma consulta SQL para excluir o produto correspondente no banco.
+
+## Screenshots
+
+![Tela de Login](screenshots/tela_login.png)
+
+![Tela de Cadastro](screenshots/tela_cadastro.png)
+
+![Tela de relatorios](screenshots/tela_relatorios.png)
+
+![Tela de Edição](screenshots/tela_alteracao.png)
+
+
 
 ## Contribuição
 Se você deseja contribuir com o projeto, por favor, faça um fork do repositório e envie um pull request com suas alterações.
