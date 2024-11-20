@@ -13,21 +13,51 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #f4f4f4; /* Fundo claro */
+    border: 1px solid #d3d3d3; /* Bordas sutis */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+QMenuBar {
+    background-color: #ffffff; /* Fundo do menu */
+    border-bottom: 1px solid #d3d3d3; /* Linha separadora */
+    font-size: 14px;
+}
+
+QMenuBar::item {
+    padding: 5px 15px;
+    background-color: transparent;
+}
+
+QMenuBar::item:selected {
+    background-color: #e0e0e0; /* Destaque ao passar o mouse */
+}
+
+QStatusBar {
+    background-color: #ffffff;
+    border-top: 1px solid #d3d3d3;
+    font-size: 12px;
+    color: #606060;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>441</width>
+      <width>211</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -42,15 +72,15 @@
      <rect>
       <x>20</x>
       <y>50</y>
-      <width>441</width>
+      <width>211</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -126,8 +156,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtLocalArmazenamento">
@@ -142,8 +185,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtEstoque">
@@ -158,8 +214,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnCadastrar">
@@ -173,10 +242,23 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #707070;
+	color: rgb(161, 161, 161);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: #5a52d4;
+}</string>
     </property>
     <property name="text">
      <string>Cadastrar</string>
@@ -193,10 +275,23 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #707070;
+	color: rgb(161, 161, 161);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: #5a52d4;
+}</string>
     </property>
     <property name="text">
      <string>Relatorio</string>
@@ -207,7 +302,7 @@
      <rect>
       <x>10</x>
       <y>730</y>
-      <width>471</width>
+      <width>701</width>
       <height>41</height>
      </rect>
     </property>
@@ -255,8 +350,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -289,28 +397,41 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
       <underline>false</underline>
      </font>
     </property>
     <property name="cursor">
      <cursorShape>IBeamCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
+    </property>
    </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>370</x>
       <y>20</y>
-      <width>381</width>
+      <width>331</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -323,7 +444,7 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>540</x>
       <y>60</y>
       <width>331</width>
       <height>31</height>
@@ -345,7 +466,7 @@
      <x>0</x>
      <y>0</y>
      <width>726</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>

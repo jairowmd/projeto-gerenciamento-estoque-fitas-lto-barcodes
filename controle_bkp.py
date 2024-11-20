@@ -123,6 +123,7 @@ def salvar_dados():
     nf = editar.txtAlterarNf.text()
     descricao = editar.txtAlterarDescricao.text()
     # Obtém os valores digitados nos campos de texto da janela de edição
+    
 
     cursor = conexao.cursor()
     # Cria um cursor para interagir com o banco de dados
@@ -213,10 +214,11 @@ def inserir():
     dados = (str(produto), str(localarmazenamento), str(estoque), str(nf), str(descricao))
     # Dados a serem inseridos
 
-    
-    cursor.execute(comando_SQL, dados)
-    # Executa o comando SQL
-
+    if isinstance(dados['estoque'], int):
+            cursor.execute(comando_SQL, dados)
+    else:
+            print("Erro: O valor de 'estoque' deve ser um número inteiro.")
+    # Verifica se o valor de 'estoque' é um número inteiro
     
     conexao.commit()
     # Confirma a alteração no banco de dados

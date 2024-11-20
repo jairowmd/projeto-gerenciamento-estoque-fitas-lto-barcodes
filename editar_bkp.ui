@@ -13,6 +13,36 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #f4f4f4; /* Fundo claro */
+    border: 1px solid #d3d3d3; /* Bordas sutis */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+QMenuBar {
+    background-color: #ffffff; /* Fundo do menu */
+    border-bottom: 1px solid #d3d3d3; /* Linha separadora */
+    font-size: 14px;
+}
+
+QMenuBar::item {
+    padding: 5px 15px;
+    background-color: transparent;
+}
+
+QMenuBar::item:selected {
+    background-color: #e0e0e0; /* Destaque ao passar o mouse */
+}
+
+QStatusBar {
+    background-color: #ffffff;
+    border-top: 1px solid #d3d3d3;
+    font-size: 12px;
+    color: #606060;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_5">
     <property name="geometry">
@@ -62,11 +92,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(0, 0, 255)</string>
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtAlterarProduto">
@@ -81,11 +121,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(0, 0, 255)</string>
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtAlterarId">
@@ -100,11 +150,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(0, 0, 255)</string>
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -137,11 +197,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(0, 0, 255)</string>
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -170,15 +240,15 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>491</width>
+      <width>441</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -199,10 +269,23 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #707070;
+	color: rgb(161, 161, 161);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: #5a52d4;
+}</string>
     </property>
     <property name="text">
      <string>Confirmar a Alteração</string>
@@ -238,11 +321,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(0, 0, 255)</string>
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -278,11 +371,21 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(0, 0, 255)</string>
+     <string notr="true">QLineEdit {
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+QLineEdit:focus {
+    border: 2px solid #6c63ff;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -313,7 +416,7 @@
      <x>0</x>
      <y>0</y>
      <width>517</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>

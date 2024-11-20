@@ -13,21 +13,51 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #f4f4f4; /* Fundo claro */
+    border: 1px solid #d3d3d3; /* Bordas sutis */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+QMenuBar {
+    background-color: #ffffff; /* Fundo do menu */
+    border-bottom: 1px solid #d3d3d3; /* Linha separadora */
+    font-size: 14px;
+}
+
+QMenuBar::item {
+    padding: 5px 15px;
+    background-color: transparent;
+}
+
+QMenuBar::item:selected {
+    background-color: #e0e0e0; /* Destaque ao passar o mouse */
+}
+
+QStatusBar {
+    background-color: #ffffff;
+    border-top: 1px solid #d3d3d3;
+    font-size: 12px;
+    color: #606060;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>411</width>
+      <width>361</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -58,12 +88,12 @@
     </column>
     <column>
      <property name="text">
-      <string>DC</string>
+      <string>armazenamento</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>ESTOQUE Quant</string>
+      <string>Estoque</string>
      </property>
     </column>
     <column>
@@ -88,10 +118,23 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #707070;
+	color: rgb(161, 161, 161);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: #5a52d4;
+}</string>
     </property>
     <property name="text">
      <string>Alterar Registro</string>
@@ -108,7 +151,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -117,7 +160,17 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(255, 0, 0)</string>
+     <string notr="true">QPushButton {
+    background-color: #707070;
+	color: rgb(255, 0, 0);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: #ff3434;
+}</string>
     </property>
     <property name="text">
      <string>Apagar Registro</string>
@@ -127,7 +180,7 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>10</y>
+      <y>20</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -148,7 +201,7 @@
      <x>0</x>
      <y>0</y>
      <width>947</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>
